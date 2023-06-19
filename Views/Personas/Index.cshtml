@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AdministradorPersonas.Models.Persona>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Personas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Agregar persona</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                País
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pais.Nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonaId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.PersonaId" class="btn btn-secondary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.PersonaId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
